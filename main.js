@@ -64,6 +64,8 @@ client.on('message', message => {
         client.commands.get('commands').execute(message, args, Discord);
     } else if (command === 'join') {
         client.commands.get('join').execute(message, args, Discord);
+    } else if (command === 'play') {
+        client.commands.get('play').execute(message, args, Discord);
     }
 });
 

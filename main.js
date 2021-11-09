@@ -5,12 +5,17 @@ const client = new Discord.Client();
 // const { createAudioPlayer } = require('@discordjs/voice');
 // const { joinVoiceChannel } = require('@discordjs/voice');
 
-//To do list:
-//ranking command: ?upgrade @target
-//weekly goat: random person that is the goat of the weak
-//sad vibes message: sends message to cheer up person in sad vibes
-//poll system: ?poll (poll)
-//spamm plug
+// To do list:
+// [x] - ranking command: ?upgrade @target
+// [ ] - weekly goat: random person that is the goat of the weak
+// [ ] - sad vibes message: sends message to cheer up person in sad vibes
+// [ ] - poll system: ?poll (poll)
+// [ ] - spamm plug
+// [ ] - music bot common commands, stop, skip etc.
+// [ ] - music queue command
+// [ ] - potential Apex Legends API integration
+// [ ] - Potential Minecraft Hypixel API integration
+
 
 const prefix = '?';
 const fs = require('fs');

@@ -2,9 +2,6 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-// const { createAudioPlayer } = require('@discordjs/voice');
-// const { joinVoiceChannel } = require('@discordjs/voice');
-
 // To do list:
 // [x] - ranking command: ?upgrade @target
 // [ ] - weekly goat: random person that is the goat of the weak
@@ -97,6 +94,8 @@ client.on('message', message => {
         client.commands.get('upgrade').execute(message, args, );
     } else if (command === 'downgrade') {
         client.commands.get('downgrade').execute(message, args, );
+    } else if (command === 'api'){
+        client.commands.get('api').execute(message, args, );
     }
 });
 

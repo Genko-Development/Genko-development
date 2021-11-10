@@ -9,6 +9,8 @@ module.exports = {
     run: async(client, message, args) => {
         let platform = args[0].toUpperCase();
         let user = args[1];
+        // let arenas = args[2];
+
 
         //https://api.mozambiquehe.re/bridge?version=5&platform=PS4&player=${user}&auth=${apiKey}
         //https://api.mozambiquehe.re/bridge?version=5&platform=Pc&player=${user}&auth=${apiKey}
@@ -18,6 +20,7 @@ module.exports = {
                 let data = response.data;
 
                 loadEmbed(globalData, data);
+                console.log(`${data.legends.selected.data}`)
             });
 
 
@@ -31,15 +34,19 @@ module.exports = {
                 .setAuthor(globalData.name, globalData.avatar)
                 .setDescription(`Score: ${globalData.rank.rankScore}`)
                 .setThumbnail(globalData.rank.rankImg)
-                .addFields({ name: `Currently: ${data.realtime.currentState}`, value: `Is ingame: ${data.realtime.isInGame}` },
-                    // { name: `Current Legend: ${data.realtime.selectedLegend}`, value: `${data.total.wins_season_8.name} : ${data.total.wins_season_8.value}`, inline: true }, 
-                    // { name: `${data.total.games_played.name} : ${data.total.games_played.value}`, value: `${data.total.kills_season_8.name} : ${data.total.kills_season_8.value}`, inline: true }, 
-                )
-                .setTimestamp()
-                .setFooter(`${data.total.kd.name} : ${data.total.kd.value}`, '');
+                .addFields({ name: `Currently: ${data.realtime.currentState}`, value: `Is ingame: ${data.realtime.isInGame}` }, { name: `Current Legend: ${data.realtime.selectedLegend}`, value: ` Total kills: ${data.total.specialEvent_kills.value}` }, { name: `Level: ${globalData.level}`, value: `dammage: ${data.total.specialEvent_damage.value}` })
+
+
+            .setTimestamp()
+                .setFooter(``, '');
 
             message.reply(userEmbed);
         }
+
+        // if (arenas = args[2]) {
+
+        // }
+
 
 
     }

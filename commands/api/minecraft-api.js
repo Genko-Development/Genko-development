@@ -7,7 +7,7 @@ const uuidLink = 'https://api.mojang.com/users/profiles/minecraft/'
 module.exports = {
     name: 'api',
     description: "this command get stats from hypixel!",
-    execute(message, args) {
+    run(message, args) {
 
         axios.get(`${uuidLink + args[0]}`)
             .then((response) => {

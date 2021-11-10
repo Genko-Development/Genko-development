@@ -2,9 +2,6 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-// const { createAudioPlayer } = require('@discordjs/voice');
-// const { joinVoiceChannel } = require('@discordjs/voice');
-
 // To do list:
 // [x] - ranking command: ?upgrade @target
 // [ ] - weekly goat: random person that is the goat of the weak
@@ -19,18 +16,22 @@ const client = new Discord.Client();
 
 const prefix = '?';
 const fs = require('fs');
-const { execute } = require('./commands/ping');
+// const { execute } = require('./commands/ping');
 
 client.commands = new Discord.Collection();
 
 
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
 
-    client.commands.set(command.name, command);
+["command-handler"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+});
+// const commandFiles = fs.readdirSync('./handlers/').filter(file => file.endsWith('.js'))
+// for (const file of commandFiles) {
+//     const command = require(`./handlers/${file}`);
 
-}
+//     client.commands.set(command.name, command);
+
+// }
 
 
 //online confirmation
@@ -49,172 +50,192 @@ client.on('guildMemberAdd', guildMember => {
 });
 
 
-
 client.on('message', message => {
-    if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
-
-    //all commands
-    if (command === 'ping') {
-        client.commands.get('ping').execute(message, args);
-    } else if (command == 'website') {
-        client.commands.get('website').execute(message, args);
-    } else if (command === 'info') {
-        client.commands.get('info').execute(message, args);
-    } else if (command === 'rules') {
-        client.commands.get('rules').execute(message, args);
-    } else if (command === 'commands') {
-        client.commands.get('commands').execute(message, args, Discord);
-    } else if (command === 'join') {
-        client.commands.get('join').execute(message, args, Discord);
-    } else if (command === 'play') {
-        client.commands.get('play').execute(message, args, Discord);
-    }
-});
-
-client.on('message', message => {
-    if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
-
-    //all staff commands
-    if (command === 'clear') {
-        client.commands.get('clear').execute(message, args);
-    } else if (command === 'mute') {
-        client.commands.get('mute').execute(message, args, );
-    } else if (command === 'unmute') {
-        client.commands.get('unmute').execute(message, args, );
-    } else if (command === 'kick') {
-        client.commands.get('kick').execute(message, args, );
-    } else if (command === 'ban') {
-        client.commands.get('ban').execute(message, args, );
-    } else if (command === 'epic') {
-        client.commands.get('epic').execute(message, args, );
-    } else if (command === 'sleep') {
-        client.commands.get('sleep').execute(message, args, );
-    } else if (command === 'upgrade') {
-        client.commands.get('upgrade').execute(message, args, );
-    } else if (command === 'downgrade') {
-        client.commands.get('downgrade').execute(message, args, );
-    }
-});
-
-
-//chat filter
-client.on('message', async message => {
-    //1 blacklisted words
-    let blacklisted = ['fuck', 'shit,', 'bullshit', 'bitch', 'asshole', 'cunt', 'virgin', 'discord.gg', 'kanker', 'aids', 'jood', ] //words
-        //2 looking for words
-    let foundInText = false;
-    if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-        for (var i in blacklisted) { // loops through the blacklisted list
-            if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) // checks casesensitive words
-                foundInText = true;
-        }
-    }
-    if (message.member.hasPermission('MANAGE_MESSAGES')) {
-        return
-    }
-    //3 deletes and send message
-    if (foundInText) {
-        message.delete();
-        message.channel.send('Hey! That word is not allowed!! :rage:').then(msg => {
-                msg.delete({ timeout: 10000 })
-            })
-            .catch('message not send!');
-    }
-});
-
-
-
-client.on('message', async message => {
-
-    //1 blacklisted words
-    let Leo = ['lmao']
-    let blacklisted = ['kaas'] //words
-    let kanker = ['jeroen??']
-    let Pepijn = ['bloempot']
-    let Tjeerd = ['Fix hypixel']
-    let huts = ['huts']
-        //2 looking for words
-    let messageFound = false;
-    let replyFound = false;
-    let messageLeo = false;
-    let messagePepijn = false
-    let niffau = false
-    let hypixel = false
-
     if (message.author.bot) return;
+    if (!message.guild) return;
+    if (!message.content.startsWith(prefix)) return;
 
-    for (var i in Tjeerd) {
-        if (message.content.toLowerCase().includes(Tjeerd[i].toLowerCase()))
-            hypixel = true;
-    }
-    if (hypixel) {
-        message.channel.send('Tjeerd fix hypixel').then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
+    const args = message.content
+        .slice(prefix.length)
+        .trim()
+        .split(/ +/g);
+    const cmd = args.shift().toLowerCase();
 
-    for (var i in huts) {
-        if (message.content.toLowerCase().includes(huts[i].toLowerCase()))
-            niffau = true;
-    }
-    if (niffau) {
-        message.channel.send('a niffau').then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
+    if (cmd.length === 0) return;
 
-    for (var i in blacklisted) {
-        if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase()))
-            messageFound = true;
-    }
-    if (messageFound) {
-        message.channel.send('Jeroen??').then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
+    let command = client.commands.get(cmd);
 
-    for (var i in kanker) {
-        if (message.content.toLowerCase().includes(kanker[i].toLowerCase()))
-            replyFound = true;
-    }
-    if (replyFound) {
-        (message.channel.send('Kaas')).then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
+    if (!command) command = client.commands.get(client.aliases.get(cmd));
 
-    for (var i in Leo) {
-        if (message.content.toLowerCase().includes(Leo[i].toLowerCase()))
-            messageLeo = true;
-    }
-    if (messageLeo) {
-        message.channel.send('Leo??').then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
+    if (command) command.run(client, message, args);
+})
 
-    for (var i in Pepijn) {
-        if (message.content.toLowerCase().includes(Pepijn[i].toLowerCase()))
-            messagePepijn = true;
-    }
-    if (messagePepijn) {
-        message.channel.send('Pepijn??').then(msg => {
-                msg.delete({ timeout: 5000 })
-            })
-            .catch('message not send!');
-    }
-});
+
+// client.on('message', message => {
+//     if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
+
+//     const args = message.content.slice(prefix.length).trim().split(' ');
+//     const command = args.shift().toLowerCase();
+
+//     //all commands
+//     if (command === 'ping') {
+//         client.commands.get('ping').execute(message, args);
+//     } else if (command == 'website') {
+//         client.commands.get('website').execute(message, args);
+//     } else if (command === 'info') {
+//         client.commands.get('info').execute(message, args);
+//     } else if (command === 'rules') {
+//         client.commands.get('rules').execute(message, args);
+//     } else if (command === 'commands') {
+//         client.commands.get('commands').execute(message, args, Discord);
+//     } else if (command === 'join') {
+//         client.commands.get('join').execute(message, args, Discord);
+//     }
+// });
+
+// client.on('message', message => {
+//     if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
+
+//     const args = message.content.slice(prefix.length).trim().split(' ');
+//     const command = args.shift().toLowerCase();
+
+//     //all staff commands
+//     if (command === 'clear') {
+//         client.commands.get('clear').execute(message, args);
+//     } else if (command === 'mute') {
+//         client.commands.get('mute').execute(message, args, );
+//     } else if (command === 'unmute') {
+//         client.commands.get('unmute').execute(message, args, );
+//     } else if (command === 'kick') {
+//         client.commands.get('kick').execute(message, args, );
+//     } else if (command === 'ban') {
+//         client.commands.get('ban').execute(message, args, );
+//     } else if (command === 'epic') {
+//         client.commands.get('epic').execute(message, args, );
+//     } else if (command === 'sleep') {
+//         client.commands.get('sleep').execute(message, args, );
+//     } else if (command === 'upgrade') {
+//         client.commands.get('upgrade').execute(message, args, );
+//     } else if (command === 'downgrade') {
+//         client.commands.get('downgrade').execute(message, args, );
+//     } else if (command === 'api'){
+//         client.commands.get('api').execute(message, args, );
+//     }
+// });
+
+
+// //chat filter
+// client.on('message', async message => {
+//     //1 blacklisted words
+//     let blacklisted = ['fuck', 'shit,', 'bullshit', 'bitch', 'asshole', 'cunt', 'virgin', 'discord.gg', 'kanker', 'aids', 'jood', ] //words
+//         //2 looking for words
+//     let foundInText = false;
+//     if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+//         for (var i in blacklisted) { // loops through the blacklisted list
+//             if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase())) // checks casesensitive words
+//                 foundInText = true;
+//         }
+//     }
+//     if (message.member.hasPermission('MANAGE_MESSAGES')) {
+//         return
+//     }
+//     //3 deletes and send message
+//     if (foundInText) {
+//         message.delete();
+//         message.channel.send('Hey! That word is not allowed!! :rage:').then(msg => {
+//                 msg.delete({ timeout: 10000 })
+//             })
+//             .catch('message not send!');
+//     }
+// });
+
+
+
+// client.on('message', async message => {
+
+//     //1 blacklisted words
+//     let Leo = ['lmao']
+//     let blacklisted = ['kaas'] //words
+//     let kanker = ['jeroen??']
+//     let Pepijn = ['bloempot']
+//     let Tjeerd = ['Fix hypixel']
+//     let huts = ['huts']
+//         //2 looking for words
+//     let messageFound = false;
+//     let replyFound = false;
+//     let messageLeo = false;
+//     let messagePepijn = false
+//     let niffau = false
+//     let hypixel = false
+
+//     if (message.author.bot) return;
+
+//     for (var i in Tjeerd) {
+//         if (message.content.toLowerCase().includes(Tjeerd[i].toLowerCase()))
+//             hypixel = true;
+//     }
+//     if (hypixel) {
+//         message.channel.send('Tjeerd fix hypixel').then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+
+//     for (var i in huts) {
+//         if (message.content.toLowerCase().includes(huts[i].toLowerCase()))
+//             niffau = true;
+//     }
+//     if (niffau) {
+//         message.channel.send('a niffau').then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+
+//     for (var i in blacklisted) {
+//         if (message.content.toLowerCase().includes(blacklisted[i].toLowerCase()))
+//             messageFound = true;
+//     }
+//     if (messageFound) {
+//         message.channel.send('Jeroen??').then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+
+//     for (var i in kanker) {
+//         if (message.content.toLowerCase().includes(kanker[i].toLowerCase()))
+//             replyFound = true;
+//     }
+//     if (replyFound) {
+//         (message.channel.send('Kaas')).then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+
+//     for (var i in Leo) {
+//         if (message.content.toLowerCase().includes(Leo[i].toLowerCase()))
+//             messageLeo = true;
+//     }
+//     if (messageLeo) {
+//         message.channel.send('Leo??').then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+
+//     for (var i in Pepijn) {
+//         if (message.content.toLowerCase().includes(Pepijn[i].toLowerCase()))
+//             messagePepijn = true;
+//     }
+//     if (messagePepijn) {
+//         message.channel.send('Pepijn??').then(msg => {
+//                 msg.delete({ timeout: 5000 })
+//             })
+//             .catch('message not send!');
+//     }
+// });
 
 
 

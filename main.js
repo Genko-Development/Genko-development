@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+
+
 // const { createAudioPlayer } = require('@discordjs/voice');
 // const { joinVoiceChannel } = require('@discordjs/voice');
 
@@ -215,8 +217,6 @@ client.on('message', async message => {
             .catch('message not send!');
     }
 });
-
-
 
 
 

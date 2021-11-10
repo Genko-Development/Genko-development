@@ -20,7 +20,6 @@ module.exports = {
                 let data = response.data;
 
                 loadEmbed(globalData, data);
-                console.log(`${data.legends.selected.data}`)
             });
 
 

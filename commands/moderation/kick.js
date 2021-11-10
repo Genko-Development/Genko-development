@@ -1,7 +1,7 @@
 module.exports = {
     name: 'kick',
     description: "this command kicks a member!",
-    execute(message, args) {
+    run: async(client, message, args) => {
         const member = message.mentions.users.first();
         if (!message.member.hasPermission('KICK_MEMBERS')) {
             message.channel.send('You do not have the right permissions!')

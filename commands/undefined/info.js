@@ -61,7 +61,7 @@ const InfoEmbed = {
 module.exports = {
     name: 'info',
     description: "sends info message!",
-    execute(message, args) {
+    run: async(client, message, args) => {
         message.channel.send({ embed: InfoEmbed })
 
 

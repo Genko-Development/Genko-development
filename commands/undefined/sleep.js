@@ -3,7 +3,7 @@ const { GuildMember } = require("discord.js");
 module.exports = {
     name: 'sleep',
     description: "This kick a person out a call",
-    execute(message, args) {
+    run: async(client, message, args) => {
         const target = message.mentions.users.first();
 
         if (!message.member.hasPermission('MOVE_MEMBERS')) {

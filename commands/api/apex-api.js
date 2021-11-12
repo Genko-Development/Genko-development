@@ -12,6 +12,16 @@ module.exports = {
         // let arenas = args[2];
 
 
+        if (args == "") {
+            message.channel.send("Enter a platform and a username!")
+        }
+        if (platform.toUpperCase() == platforms[0] || platforms[1]) {} else {
+            message.channel.send("Enter a real platform!")
+            console.log(platform)
+            console.log(platforms[0])
+            console.log(platforms[1])
+        }
+
         //https://api.mozambiquehe.re/bridge?version=5&platform=PS4&player=${user}&auth=${apiKey}
         //https://api.mozambiquehe.re/bridge?version=5&platform=Pc&player=${user}&auth=${apiKey}
         await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${user}&auth=${apiKey}`)
@@ -42,9 +52,7 @@ module.exports = {
             message.reply(userEmbed);
         }
 
-        // if (arenas = args[2]) {
 
-        // }
 
 
 

@@ -12,6 +12,9 @@ const client = new Discord.Client();
 // [ ] - music queue command
 // [ ] - potential Apex Legends API integration
 // [ ] - Potential Minecraft Hypixel API integration
+// [x] - Random legend chooser
+// [ ] - Random map location chooser
+// [ ] - common modaration commands
 
 
 const prefix = '?';

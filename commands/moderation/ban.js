@@ -1,6 +1,8 @@
 module.exports = {
     name: 'ban',
     description: "This command bans a member!",
+    usage: 'ban <user>',
+    category: 'moderation',
     run: async(client, message, args) => {
         const member = message.mentions.users.first();
         if (member) {

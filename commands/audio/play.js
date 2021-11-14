@@ -1,7 +1,6 @@
 const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 
-
 // to use this command you need ffmpeg installed.
 
 // to install go to this link https://www.gyan.dev/ffmpeg/builds/ download the ffmpeg-release-essentials.zip and paste them into a findable folder
@@ -10,6 +9,8 @@ const ytSearch = require('yt-search');
 module.exports = {
     name: 'play',
     description: "Bot joins your call",
+    usage: 'play <link/songname>',
+    category: 'music',
     run: async(client, message, args) => {
         const voiceChannel = message.member.voice.channel;
 

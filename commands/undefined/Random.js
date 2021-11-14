@@ -66,6 +66,8 @@ function RandomMapLocation(message, map) {
 module.exports = {
     name: 'random',
     description: "This will give you a random map or legend to play with.",
+    usage: "random <all/legend/map> | random <map> <map>",
+    category: "apex",
     run: async(client, message, args) => {
 
         command = args[0].toLowerCase()

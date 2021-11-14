@@ -1,6 +1,8 @@
 module.exports = {
     name: 'unmute',
     description: "This will mute a member",
+    usage: 'unmute <user>',
+    category: 'moderation',
     run: async(client, message, args) => {
         const target = message.mentions.users.first();
         if (!message.member.hasPermission('KICK_MEMBERS')) {

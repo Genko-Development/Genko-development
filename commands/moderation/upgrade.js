@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: 'upgrade',
     description: "upgrades your rank",
+    category: 'moderation',
     run: async(client, message, args) => {
 
         const author = message.member.id

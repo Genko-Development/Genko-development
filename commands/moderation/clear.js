@@ -1,6 +1,8 @@
 module.exports = {
     name: 'clear',
-    description: "Clears messages",
+    description: "Clears channel messages",
+    usage: 'clear',
+    category: 'moderation',
     run: async(client, message, args) => {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) {
             message.channel.send('You do not have the right permissions!')

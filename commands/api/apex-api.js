@@ -9,8 +9,6 @@ module.exports = {
     run: async(client, message, args) => {
         let platform = args[0].toUpperCase();
         let user = args[1];
-        // let arenas = args[2];
-
 
         if (args == "") {
             message.channel.send("Enter a platform and a username!")

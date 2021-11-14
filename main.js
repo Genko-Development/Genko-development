@@ -11,9 +11,9 @@ const client = new Discord.Client();
 // [ ] - music bot common commands, stop, skip etc.
 // [ ] - music queue command
 // [ ] - potential Apex Legends API integration
-// [ ] - Potential Minecraft Hypixel API integration
+// [ ] - Potential Minecraft Hypixel API integration - common stats
 // [x] - Random legend chooser
-// [ ] - Random map location chooser
+// [x] - Random map location chooser
 // [ ] - common modaration commands
 
 

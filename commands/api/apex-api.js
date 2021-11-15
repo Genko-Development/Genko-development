@@ -10,11 +10,11 @@ module.exports = {
     run: async(client, message, args) => {
         let platform = args[0].toUpperCase();
         let user = args[1];
-
+        let platforms = ["PC", "PS4"]
         if (args == "") {
             message.channel.send("Enter a platform and a username!")
         }
-        if (platform.toUpperCase() == platforms[0] || platforms[1]) {} else {
+        if (platform == platforms[0] || platforms[1]) {} else {
             message.channel.send("Enter a real platform!")
         }
 

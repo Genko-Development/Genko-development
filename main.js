@@ -42,6 +42,23 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setActivity("?commands", { type: "PLAYING" });
 
+
+    const { Player } = require("discord-music-player");
+    const player = new Player(client, {
+        leaveOnEmpty: false,
+    });
+
+    client.player = player;
+
+    new Player(client, {
+        leaveOnEnd: true,
+        leaveOnStop: true,
+        leaveOnEmpty: true,
+        timeout: 10,
+        volume: 150,
+        quality: 'high',
+    });
+
 });
 
 client.on('guildMemberAdd', guildMember => {

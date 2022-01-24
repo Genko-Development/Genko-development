@@ -16,6 +16,9 @@ const client = new Discord.Client();
 // [x] - Random legend chooser
 // [x] - Random map location chooser
 // [ ] - common modaration commands
+// [x] - Genshin chracter info with api
+// [ ] - Genshin artifact info with api
+// [ ] - Genshin best character artifact builds
 
 
 const prefix = '?';

@@ -1,3 +1,4 @@
+const { channel } = require('diagnostics_channel');
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
@@ -9,7 +10,7 @@ const client = new Discord.Client();
 // [ ] - poll system: ?poll (poll)
 // [ ] - spamm plug
 // [ ] - music bot common commands, stop, skip etc.
-// [ ] - music queue command
+// [x] - music queue command
 // [ ] - potential Apex Legends API integration
 // [ ] - Potential Minecraft Hypixel API integration - common stats
 // [x] - Random legend chooser
@@ -91,7 +92,23 @@ client.on('message', message => {
     // if (!command) command = client.commands.get(client.aliases.get(cmd))
 
     if (command) command.run(client, message, args);
-})
+});
+// client.on('message', message => {
+
+// })
+client.on('voiceStateUpdate', (newMember, newstate) => {
+    let userid = newMember.member.user.id
+    const textChannel = client.channels.cache.get('842518619639382037');
+    if (newstate.channelID == "841109858334015548") {
+        textChannel.send(`<@${userid}> is in depressie sesie join him`)
+    }
+    // if(oldMember.voiceChannel === undefined && newMember.voiceChannel !== undefined){
+
+    // }
+});
+
+
+
 
 
 // client.on('message', message => {
@@ -265,4 +282,4 @@ client.on('message', message => {
 
 
 
-client.login('ODUyNjUxMjEzOTExNDkwNjMx.YMJ7Ug.bqghxQSuYkB2o8XyjYbKWVeaJHQ');
+client.login('ODUyNjUxMjEzOTExNDkwNjMx.YMJ7Ug.YQpWC-izfU7XrTGCGjjgeGC_QKM');

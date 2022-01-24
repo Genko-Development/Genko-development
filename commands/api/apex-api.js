@@ -7,6 +7,7 @@ module.exports = {
     name: 'apex',
     description: "This command get stats from Apex Legends!",
     usage: 'apex <platform> <username>',
+    category: 'apex',
     run: async(client, message, args) => {
         let platform = args[0].toUpperCase();
         let user = args[1];

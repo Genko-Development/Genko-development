@@ -5,11 +5,11 @@ const client = new Discord.Client();
 // To do list:
 // [x] - ranking command: ?upgrade @target
 // [ ] - weekly goat: random person that is the goat of the weak
-// [ ] - sad vibes message: sends message to cheer up person in sad vibes
+// [-] - sad vibes message: sends message to cheer up person in sad vibes
 // [ ] - poll system: ?poll (poll)
 // [ ] - spamm plug
-// [ ] - music bot common commands, stop, skip etc.
-// [ ] - music queue command
+// [-] - music bot common commands, stop, skip etc.
+// [x] - music queue command
 // [ ] - potential Apex Legends API integration
 // [ ] - Potential Minecraft Hypixel API integration - common stats
 // [x] - Random legend chooser

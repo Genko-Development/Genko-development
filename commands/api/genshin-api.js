@@ -32,6 +32,21 @@ module.exports = {
                 .then((response) => {
                     message.channel.send(response.data)                    
                 });
+        if (args[0] != "characters" && args[0] != "artifacts") {
+            for (character in characters) {
+                if (character = args[0]) {
+                    await axios.get(`https://api.genshin.dev/characters/${character}`)
+                        .then((response) => {
+                            data = response.data
+                            color = (data.rarity == 4) ? '#9B59B6' : '#F1C40F'
+                            loadEmbed(data, message, color, character)
+                        });
+                    break
+                }
+            }
+        } else {
+            return
+
         }
         
     }

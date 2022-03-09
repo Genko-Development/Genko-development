@@ -1,3 +1,4 @@
+const { channel } = require('diagnostics_channel');
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
@@ -94,7 +95,23 @@ client.on('message', message => {
     // if (!command) command = client.commands.get(client.aliases.get(cmd))
 
     if (command) command.run(client, message, args);
-})
+});
+// client.on('message', message => {
+
+// })
+client.on('voiceStateUpdate', (newMember, newstate) => {
+    let userid = newMember.member.user.id
+    const textChannel = client.channels.cache.get('842518619639382037');
+    if (newstate.channelID == "841109858334015548") {
+        textChannel.send(`<@${userid}> is in depressie sesie join him`)
+    }
+    // if(oldMember.voiceChannel === undefined && newMember.voiceChannel !== undefined){
+
+    // }
+});
+
+
+
 
 
 // client.on('message', message => {

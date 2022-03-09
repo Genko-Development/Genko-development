@@ -3,7 +3,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: 'downgrade',
     description: "downgrades your rank",
-    execute(message, args, Discord) {
+    category: 'moderation',
+    run: async(client, message, args) => {
 
         const author = message.member.id
         const target = message.mentions.users.first();

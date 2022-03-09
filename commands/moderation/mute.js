@@ -1,6 +1,7 @@
 module.exports = {
   name: "mute",
   aliases: ["mutes", "muted"],
+  usage: 'mute <user>',
   category: "moderation",
   description: "muet",
   run: async (client, message, args) => {

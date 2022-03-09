@@ -6,11 +6,12 @@ module.exports = {
     description: "This command makes a poll!",
     usage: 'poll <question> "awnser" "awnser" ect.',
     run: async(client, message) => {
-        if (!message.member.roles.cache.find(r => r.name === "Dev Team")) {
+        // const pollChannel = client.channels.find('Polls')  
+        if (!message.member.roles.cache.find(r => r.name === "Magic Meme")) {
             message.channel.send('Nehh!')
             console.log(`${author} tried to do the upgrade command`)
 
-        } else if (message.member.roles.cache.find(r => r.name === "Dev Team")) {
+        } else if (message.member.roles.cache.find(r => r.name === "Magic Meme")) {
 
             const options = [
                 '🇦','🇧','🇨','🇩','🇪','🇫','🇬','🇭','🇮','🇯','🇰','🇱','🇲','🇳','🇴','🇵','🇶','🇷','🇸','🇹','🇺','🇻','🇼','🇽','🇾','🇿',
@@ -43,7 +44,6 @@ module.exports = {
             .setColor('#8CD7FF')
             .setTitle(`**${question}**`)
             .setDescription(content);
-
             message.channel.send(`:bar_chart: ${message.author} started a poll.`, embed)
             .then(async m => {
                 for (let i = 0; i < choices.length; i++) await m.react(options[i]);

@@ -20,14 +20,20 @@ module.exports = {
                 .then((response) => {
                     message.channel.send(response.data)                    
                 });
-        }
-        if(args[0] != "characters"){
+        }else if(args[0] != "characters"){
             await axios.get(`https://api.genshin.dev/characters`) 
                 .then((response) => {
                     response.data.includes(args[0])
                     loadCharacterInfo(args[0], message)
                 });
         }
+        if(args[0] == 'nations'){
+            await axios.get(`https://api.genshin.dev/nations`) 
+                .then((response) => {
+                    message.channel.send(response.data)                    
+                });
+        }
+        
     }
 }   
 

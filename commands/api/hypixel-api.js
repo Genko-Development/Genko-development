@@ -1,5 +1,6 @@
+//87799a0a-b30a-489e-b33d-aa67ffafe764
 module.exports = {
-    name: 'help',
+    name: 'hypixel',
     description: "Show list of all commands / show command details.",
     usage: "help | help <cmd>",
     category: "info",

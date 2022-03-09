@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 let legendsJeroen = ["Ash", "Bangalore", "Bloodhoud", "Caustic", "Crypto", "Fuse", "Gibraltar", "Horizon", "Lifeline", "Loba", "Mirage", "Octane", "Pathfinder", "Rampart", "Revanant", "Seer", "Valkyrie", "Wattson", "Wraith"]
 let legendsPepijn = ["Ash", "Bangalore", "Bloodhoud", "Fuse", "Gibraltar", "Lifeline", "Octane", "Pathfinder", "Rampart", "Seer", "Wattson", "Wraith", "Valkyrie"]
-let legendsTjeerd = ["Ash", "Bangalore", "Bloodhoud", "Gibraltar", "Horizon", "Lifeline", "Mirage", "Octane", "Pathfinder", "Revanant", "Wattson", "Rampart", "Valkyrie", "Wraith", "Caustic", ]
+let legendsTjeerd = ["Ash", "Bangalore", "Bloodhoud", "Gibraltar", "Horizon", "Lifeline", "Mirage", "Octane", "Pathfinder", "Revanant", "Wattson", "Rampart", "Valkyrie", "Wraith", "Caustic", 'Mad Maggie']
 
 let mapKingsCanyon = ["Artillery", "Slum lakes", "The pit", "Cascades", "Relay", "Wetlands", "Swamps", "Bridges", "Bunker", "Cage", "Runoff", "Airbase", "Labs", "Market", "Water Treatment", "Hydro dam", "Repulsor", "Salvage", "gauntlet"]
 let mapWorldsEdge = ["Rampart's Big Maude", "Bloodhound's Trials", "Climatizer", "Countdown", "Fragment East", "Fragment West", "Fissure Crossing", "Harvester", "Hill Valley", "Landslide", "Launch Site", "Lava City", "Lava Fissure", "Lava Siphon", "Overlook", "Staging", "Skyhook", "Spring's End", "Storage Room", "Survey Camp", "Thermal Station", "The Bridge", "The Dome", "The Epicenter", "The Geyser", "The Mining Pass", "The Rain Tunnel", "The Tree"]

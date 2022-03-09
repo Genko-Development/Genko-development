@@ -12,9 +12,6 @@ module.exports = {
         if (message.author.bot) return;
         // artifact = true
 
-
-
-
         console.log(args[0])
         if (args[0] == `characters`) {
             message.channel.send(characters)
@@ -35,6 +32,8 @@ module.exports = {
                     break
                 }
             }
+        } else {
+            return
         }
 
     }

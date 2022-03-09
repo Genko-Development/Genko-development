@@ -13,8 +13,8 @@ module.exports = {
     usage: 'skip',
     category: 'music',
     run: async(client, message, args) => {
-        const server_queue = queue.get(message.guild.id);
-        skip_song(message, server_queue)
+        // const server_queue = queue.get(message.guild.id);
+        // skip_song(message, server_queue)
 
     }
 }

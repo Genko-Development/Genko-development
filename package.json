@@ -17,6 +17,7 @@
     "erela.js": "^2.3.3",
     "ffmpeg-static": "^4.4.0",
     "pretty-ms": "^7.0.1",
+    "sql": "^0.78.0",
     "yt-search": "^2.10.2",
     "ytdl": "^1.4.1",
     "ytdl-core": "^4.11.0",

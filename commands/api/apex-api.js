@@ -1,7 +1,6 @@
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js');
-
-const apiKey = 'aHV8tzyspYDsLV4kBlF3'
+const apexkey = require('../../token.json');
 
 module.exports = {
     name: 'apex',
@@ -19,12 +18,14 @@ module.exports = {
             message.channel.send("Enter a real platform!")
         }
 
-        await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${user}&auth=${apiKey}`)
+        await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${user}&auth=${APEXKEY}`)
             .then((response) => {
                 let globalData = response.data.global;
                 let data = response.data;
 
                 loadEmbed(globalData, data);
+            }).catch((error) => {
+                console.log(error)
             });
 
 

@@ -6,9 +6,12 @@ module.exports = {
     usage: "boop <member>",
     category: "info",
     run: async(client, message, args) => {
-        if (message.author.bot) return; 
+        if (message.author.bot) return;
         wow = message.mentions.members.first()
-        console.log(wow)
+        if (wow != undefined) {
+            message.channel.send(`Boop ${wow}`)
+        }
+
 
         // if(a == "852651213911490631"){
         //     message.delete();   
@@ -38,6 +41,6 @@ module.exports = {
         //     message.delete();   
         //     message.channel.send(`Get booped ${args[0]}`)
         // }
-        
+
     }
 }

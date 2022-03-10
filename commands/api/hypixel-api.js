@@ -1,8 +1,7 @@
-const hypixelkey = require('./token.json');
-const key = hypixelkey.hypixel
-
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js')
+const hypixelkey = require('../../token.json');
+
 module.exports = {
     name: 'hypixel',
     description: "",
@@ -11,7 +10,7 @@ module.exports = {
     run: async(client, message, args) => {
         const playername = args[0]
         let id;
-
+        const key = hypixelkey.hypixel
         await axios.get(`https://api.mojang.com/users/profiles/minecraft/${playername}`)
             .then((response) => {
                 data = response.data

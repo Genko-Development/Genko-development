@@ -1,9 +1,6 @@
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js');
-
-const apexkey = require('./token.json');
-const key = apexkey.apex
-const apiKey = key
+const apexkey = require('../../token.json');
 
 module.exports = {
     name: 'apex',
@@ -11,6 +8,7 @@ module.exports = {
     usage: 'apex <platform> <username>',
     category: 'apex',
     run: async(client, message, args) => {
+        const apiKey = apexkey.apex
         let platform = args[0].toUpperCase();
         let user = args[1];
         let platforms = ["PC", "PS4"]
@@ -27,6 +25,8 @@ module.exports = {
                 let data = response.data;
 
                 loadEmbed(globalData, data);
+            }).catch((error) => {
+                console.log(error)
             });
 
 

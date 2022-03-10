@@ -46,12 +46,10 @@ module.exports = {
             }
         } else {
             return
-
         }
         
     }
-}   
-
+}}
 function loadEmbed(data, message, color, character) {
     const characterEmbed = new MessageEmbed()
         .setColor(color)

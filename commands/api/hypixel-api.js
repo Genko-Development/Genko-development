@@ -1,4 +1,6 @@
-const key = '71ee3a14-8d0e-4dd9-8661-e30c8d235ff2'
+const hypixelkey = require('./token.json');
+const key = hypixelkey.hypixel
+
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js')
 module.exports = {

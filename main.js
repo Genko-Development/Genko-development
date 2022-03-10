@@ -1,4 +1,5 @@
-const { channel } = require('diagnostics_channel');
+
+
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
@@ -18,7 +19,7 @@ const client = new Discord.Client();
 // [ ] - common modaration commands
 // [x] - Genshin chracter info with api
 // [ ] - Genshin artifact info with api
-// [ ] - Genshin best character artifact builds
+// [ ] - Genshin best character artifact build
 
 
 const prefix = '?';
@@ -109,62 +110,6 @@ client.on('voiceStateUpdate', (newMember, newstate) => {
 
     // }
 });
-
-
-
-
-
-// client.on('message', message => {
-//     if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
-
-//     const args = message.content.slice(prefix.length).trim().split(' ');
-//     const command = args.shift().toLowerCase();
-
-//     //all commands
-//     if (command === 'ping') {
-//         client.commands.get('ping').execute(message, args);
-//     } else if (command == 'website') {
-//         client.commands.get('website').execute(message, args);
-//     } else if (command === 'info') {
-//         client.commands.get('info').execute(message, args);
-//     } else if (command === 'rules') {
-//         client.commands.get('rules').execute(message, args);
-//     } else if (command === 'commands') {
-//         client.commands.get('commands').execute(message, args, Discord);
-//     } else if (command === 'join') {
-//         client.commands.get('join').execute(message, args, Discord);
-//     }
-// });
-
-// client.on('message', message => {
-//     if (!message.content.startsWith(`${prefix}`) || message.author.bot) return;
-
-//     const args = message.content.slice(prefix.length).trim().split(' ');
-//     const command = args.shift().toLowerCase();
-
-//     //all staff commands
-//     if (command === 'clear') {
-//         client.commands.get('clear').execute(message, args);
-//     } else if (command === 'mute') {
-//         client.commands.get('mute').execute(message, args, );
-//     } else if (command === 'unmute') {
-//         client.commands.get('unmute').execute(message, args, );
-//     } else if (command === 'kick') {
-//         client.commands.get('kick').execute(message, args, );
-//     } else if (command === 'ban') {
-//         client.commands.get('ban').execute(message, args, );
-//     } else if (command === 'epic') {
-//         client.commands.get('epic').execute(message, args, );
-//     } else if (command === 'sleep') {
-//         client.commands.get('sleep').execute(message, args, );
-//     } else if (command === 'upgrade') {
-//         client.commands.get('upgrade').execute(message, args, );
-//     } else if (command === 'downgrade') {
-//         client.commands.get('downgrade').execute(message, args, );
-//     } else if (command === 'api'){
-//         client.commands.get('api').execute(message, args, );
-//     }
-// });
 
 
 // //chat filter
@@ -280,9 +225,5 @@ client.on('voiceStateUpdate', (newMember, newstate) => {
 //     }
 // });
 
-
-
-
-
-
-client.login('ODUyNjUxMjEzOTExNDkwNjMx.YMJ7Ug.YQpWC-izfU7XrTGCGjjgeGC_QKM');
+const login = require('./token.json');
+client.login(login.token);

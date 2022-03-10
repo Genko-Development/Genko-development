@@ -1,7 +1,9 @@
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js');
 
-const apiKey = 'aHV8tzyspYDsLV4kBlF3'
+const apexkey = require('./token.json');
+const key = apexkey.apex
+const apiKey = key
 
 module.exports = {
     name: 'apex',

@@ -8,7 +8,6 @@ module.exports = {
     usage: 'apex <platform> <username>',
     category: 'apex',
     run: async(client, message, args) => {
-        const apiKey = apexkey.apex
         let platform = args[0].toUpperCase();
         let user = args[1];
         let platforms = ["PC", "PS4"]
@@ -19,7 +18,7 @@ module.exports = {
             message.channel.send("Enter a real platform!")
         }
 
-        await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${user}&auth=${apiKey}`)
+        await axios.get(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${user}&auth=${APEXKEY}`)
             .then((response) => {
                 let globalData = response.data.global;
                 let data = response.data;

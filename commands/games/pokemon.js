@@ -14,7 +14,6 @@ module.exports = {
             }).catch((error) => {
                 console.log(error)
             });
-        console.log("kanker")
 
         // for (item in data) {
         //     if (args[0] == data.results.name) {
@@ -42,8 +41,10 @@ module.exports = {
 
 function check(data, args) {
     console.log(data.results.length)
-    for (i in data.results) {
-        if (i.name == args[0]) {
+    for (let i = 0; i < data.results.length; i++) {
+        let pokemonName = data.results[i].name;
+        str = args[0].replace(/\s+/g, '-').toLowerCase();
+        if (pokemonName == str) {
             console.log("wejow")
             break;
         }

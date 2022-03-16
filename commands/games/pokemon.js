@@ -1,5 +1,7 @@
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js')
+const Discord = require('discord.js')
+
 
 module.exports = {
     name: 'pokemon',
@@ -7,10 +9,11 @@ module.exports = {
     usage: "pokemon <Pokemon name>",
     category: "games",
     run: async(client, message, args) => {
-
+        // const logChannel = message.channel.id
+        // console.log(logChannel)
         await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=1126`)
             .then((response) => {
-                check(response.data, args,message);
+                check(response.data, args,message,);
 
             }).catch((error) => {
                 console.log(error)
@@ -41,7 +44,8 @@ module.exports = {
 }
 // Math.floor((Math.random() * 10) + 1);
 
-function check(data, args, message) {
+function check(data, args, message, client) {
+    // this.message.channels.get(logChannel).send("test")
     for (let i = 0; i < data.results.length; i++) {
         let pokemonName = data.results[i].name;
         str = args[0].replace(/\s+/g, '-').toLowerCase();
@@ -59,33 +63,56 @@ function check(data, args, message) {
     }
     if(found == true)
     {   
-        let filter = m => m.author.id === message.author.id
-        console.log(epic)
-        message.channel.send(`Choose an attack`).then(() => {
-            message.channel.awaitMessages(filter, {
-                max: 1,
-                time: 30000,
-                errors: ['time']
-              })
-              .then((message) => {
-                // messageFirst = FilterMessage.first()
-                playerNumber = Math.floor((Math.random() * 10) + 1);
-                EnemyNumber = Math.floor((Math.random() * 10) + 1);
-                if(playerNumber > EnemyNumber){
-                    message.channel.send(`You won`)
-                } 
-                if(playerNumber < EnemyNumber){
-                    message.channel.send(`You Lost`)
-                }
-                if(playerNumber == EnemyNumber){
-                    message.channel.send(`Draw`)
-                }
+        message.channel.send(`Choose an attack`).then(function (message){
+            message.react(':melon~1:')
+        })
+        .catch(error => {
+                console.log(error)
+            message.channel.send('Timeout');
+        });
+        
+        // .then(async msg => {
+        //     const filter = m => m.author.id == message.author.id
+        //     message.channel.awaitMessages({ filter, max: 1 })
+        //         .then(collected => {
+        //             // console.log("kjenkjer")
+        //             // var guess = collected.first().content
+        //             // message.channel.send("wow")
+        //             kanker = true
+        //         }).catch(error => {
+        //             console.log(error)
+        //             message.channel.send('Timeout');
+        //         });
+        // })
+        // if(kanker = true){
+        //     message.channel.send("wow")
+        // }
+        // let filter = m => m.author.id === message.author.id
+        // message.channel.send(`Choose an attack`).then((message,) => {
+        //     message.channel.awaitMessages(filter, {
+        //         max: 1,
+        //         time: 30000,
+        //         errors: ['time']
+        //       })
+        //       .then((message) => {
+        //         // messageFirst = FilterMessage.first()
+        //         playerNumber = Math.floor((Math.random() * 10) + 1);
+        //         EnemyNumber = Math.floor((Math.random() * 10) + 1);
+        //         if(playerNumber > EnemyNumber){
+        //             message.channel.send(`You won`)
+        //         } 
+        //         if(playerNumber < EnemyNumber){
+        //             message.channel.send(`You Lost`)
+        //         }
+        //         if(playerNumber == EnemyNumber){
+        //             message.channel.send(`Draw`)
+        //         }
 
-              })
-              .catch(collected => {
-                  console.log(error)
-                message.channel.send('Timeout');
-            });
-        })        
+        //       })
+        //       .catch(error => {
+        //           console.log(error)
+        //         message.channel.send('Timeout');
+        //     });
+        // })        
     }
 }

@@ -2,6 +2,16 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+// module.exports.ConnectFour = 
+
+// const { ConnectFour } = require('./commands/games/testing.js')
+// const game = new ConnectFour({
+//   message: 'test',
+//   player1: '🔴',
+//   player2: '🟡',
+// })
+// game.start()
+
 // To do list:
 // [x] - ranking command: ?upgrade @target
 // [ ] - weekly goat: random person that is the goat of the weak
@@ -224,4 +234,4 @@ client.on('voiceStateUpdate', (newMember, newstate) => {
 // });
 
 const login = require('./token.json');
-client.login(login.token);
+client.login('ODUyNjUxMjEzOTExNDkwNjMx.YMJ7Ug.YQpWC-izfU7XrTGCGjjgeGC_QKM');

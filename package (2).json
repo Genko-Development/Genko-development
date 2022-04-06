@@ -1,0 +1,19 @@
+{
+  "name": "genko-bot",
+  "version": "0.1.0",
+  "description": "a bot made by genko development",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tjeerd",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "ytdl-core": "^4.11.0"
+  },
+  "keywords": [
+    "genko"
+  ]
+}

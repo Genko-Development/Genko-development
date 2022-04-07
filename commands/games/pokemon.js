@@ -10,7 +10,8 @@ module.exports = {
     run: async(client, message, args) => {
         MemberId = message.author.id
         console.log(MemberId)
-        wow = ''
+        img = ''
+        moves = []
         found = false
         //Api call to check if the pokemon they submited exists
         await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=1126`)
@@ -38,7 +39,11 @@ module.exports = {
         await axios.get(Url)
         .then((response) => {
             data = response.data
-            wow = data.sprites.front_default
+            img = data.sprites.front_default
+            // for (let i = 0; i < response.data.results.length; i++) {
+            //     let pokemonName = response.data.results[i].name;
+            //     str = args[0].replace(/\s+/g, '-').toLowerCase();
+            // }
         }).catch((error) => {
             console.log(error)
         })
@@ -47,9 +52,9 @@ module.exports = {
         const initial = new MessageEmbed()
             .setColor('#0099ff')
             .setTitle('Attack panel')
-            .setAuthor({ name: `<@${message.author.id}>`})
+            .setAuthor({ name: message.author.tag})
             .setDescription('Some description here')
-            .setThumbnail(wow)
+            .setThumbnail(img)
             .addFields({ name: 'AtackOne', value: '.' })
             .addFields({ name: 'AtackTwo', value: '.' })
             .addFields({ name: 'AtackThree', value: '.' })

@@ -16,8 +16,5 @@ module.exports = {
                 message.channel.send('you couldnt kick that member');
             }
         }
-
-
-
     }
 }

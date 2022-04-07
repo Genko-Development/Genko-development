@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const { MessageEmbed } = require('discord.js')
-const hypixelkey = require('../../token.json');
+const hypixelkey = require('../../secret.json');
 
 module.exports = {
     name: 'hypixel',

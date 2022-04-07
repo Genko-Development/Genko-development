@@ -4,10 +4,9 @@ module.exports = {
     usage: 'ban <user>',
     category: 'moderation',
     run: async(client, message, args) => {
-        if (!message.member.hasPermission('BAN_MEMBERS')) {
+        if (!message.member.permissions.has('BAN_MEMBERS')) {
             message.channel.send('Nehh!')
             console.log(`${author} tried to do the upgrade command`)
-
         }else{
             const member = message.mentions.users.first();
             if (member) {
@@ -18,8 +17,5 @@ module.exports = {
                 message.channel.send('you couldnt ban that member');
             }
         }
-        
-
-
     }
 }

@@ -25,7 +25,8 @@ module.exports = {
         //         console.log(image ? image.attribs.content : "no image") // https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded
         //         console.log(nothing ? nothing.attribs.content : "Literally, nothing") // Literally, nothing
         //     })
-        fetch("https://finance.yahoo.com/quote/TSLA?p=TSLA").then(res => res.text())
+        fetch("https://finance.yahoo.com/quote/TSLA?p=TSLA")
+            .then(res => res.text())
             .then(html => {
                 const $ = cheerio.load(html)
                 const title = $("meta[property='og:title']")[0] || $("meta[name='twitter:title']")

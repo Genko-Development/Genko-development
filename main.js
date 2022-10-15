@@ -1,6 +1,6 @@
 //Import libraries
 const fs = require('node:fs');
-const { Collection } = require('discord.js')
+const { Collection, VoiceState } = require('discord.js')
 const { Client, Intents, MessageEmbed } = require('discord.js');
 //Make a new Client with given Intents
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, 
@@ -43,6 +43,12 @@ client.on('messageCreate', message => {
     let command = client.commands.get(cmd);
     if (!command) command = client.commands.get(client.aliases.get(cmd))
     if (command) command.run(client, message, args);
+});
+channelID = 841109858334015548
+client.on('voiceStateUpdate', (oldState, newState) => {
+    console.log(oldState.roles)
+    console.log(VoiceState)
+    newState.disconnect()
 });
 //Runs the code on the bot that is connected with the token
 const login = require('./secret.json');

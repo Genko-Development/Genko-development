@@ -13,6 +13,10 @@ module.exports = {
         img = ''
         moves = []
         found = false
+        // var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+        // console.log(seq);
+        // var digits = (""+seq).split("");
+        // console.log(digits);
         //Api call to check if the pokemon they submited exists
         await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=1126`)
             .then((response) => {
@@ -40,10 +44,10 @@ module.exports = {
         .then((response) => {
             data = response.data
             img = data.sprites.front_default
-            // for (let i = 0; i < response.data.results.length; i++) {
-            //     let pokemonName = response.data.results[i].name;
-            //     str = args[0].replace(/\s+/g, '-').toLowerCase();
-            // }
+            for (let i = 0; i < response.data.results.length; i++) {
+                let pokemonName = response.data.results[i].name;
+                str = args[0].replace(/\s+/g, '-').toLowerCase();
+            }
         }).catch((error) => {
             console.log(error)
         })

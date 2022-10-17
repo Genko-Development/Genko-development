@@ -48,7 +48,6 @@ channelID = 841109858334015548
 client.on('voiceStateUpdate', (oldState, newState) => {
     console.log(oldState.roles)
     console.log(VoiceState)
-    newState.disconnect()
 });
 //Runs the code on the bot that is connected with the token
 const login = require('./secret.json');
